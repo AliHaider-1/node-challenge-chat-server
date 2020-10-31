@@ -38,7 +38,7 @@ app.get('/messages/text/search', function(request, response) {
   response.json(messages.filter(item => item.text.includes(Input)));  
 });
 //Messages 10 latest
-app.get('/messages/latest/latest', function(request, response) {
+app.get('/messages/10/latest', function(request, response) {
   let arr=[];
   arr.push(messages);
    if(messages.length > 10 ) {
