@@ -45,7 +45,7 @@ app.post("/messages", function(request, response){
    response.json("success")
   }
   else{
-    response.json("error message Field empty")
+    response.json("Error : Status Code 400")
   }
 });
 //delete Message
