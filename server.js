@@ -34,14 +34,23 @@ app.get('/messages/:id', function(request, response) {
 });
 //Message get by text Query
 app.get('/messages/text/search', function(request, response) {
-  const Input = request.query.input;
+  const Input = request.query.text;
   response.json(messages.filter(item => item.text.includes(Input)));  
 });
-// Create Message
+//Messages 10 latest
+app.get('/messages/latest/latest', function(request, response) {
+  let arr=[];
+  arr.push(messages);
+   if(messages.length > 10 ) {
+    arr =  messages.slice(0,10);
+    }   
+     response.send(arr);   
+});      
+// Create Message  
 app.post("/messages", function(request, response){
   if(request.body.text && request.body.from ){
     let body = request.body;
-    messages.push(body)
+    messages.unshift(body)
    response.json("success")
   }
   else{
